@@ -1,6 +1,7 @@
 /* LIBRARY */
 import React, { PureComponent } from 'react';
 import { Route, Switch } from "react-router";
+import { HashRouter } from "react-router-dom";
 import Breadcrumbs from '@trendmicro/react-breadcrumbs';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { Button, ButtonGroup } from '@trendmicro/react-buttons';
@@ -80,66 +81,66 @@ export default class extends PureComponent {
       const { expanded, selected } = this.state;
 
       return (
-        <div>
-          <head>
-            CARD MAKER BY TEAM JUSTICE
-          </head>
-          <SideNav onSelect={this.onSelect} onToggle={this.onToggle}>
-            <SideNav.Toggle />
-            <SideNav.Nav defaultSelected="create" selected={selected}>
-              <NavItem eventKey="home">
-                  <NavIcon>
-                      <img className="icon" src={homeLogo} alt="Home" />
-                  </NavIcon>
-                  <NavText>
-                      Home
-                  </NavText>
-              </NavItem>
-              <NavItem eventKey="create">
-                  <NavIcon>
-                      <img className="icon" src={createLogo} alt="Create" />
-                  </NavIcon>
-                  <NavText>
-                      Create
-                  </NavText>
-              </NavItem>
-              <NavItem eventKey="edit">
-                  <NavIcon>
-                      <img className="icon" src={editLogo} alt="Edit" />
-                  </NavIcon>
-                  <NavText>
-                      Edit
-                  </NavText>
-                  <NavItem eventKey="edit/main">
-                      <NavText>
-                          Main Workspace
-                      </NavText>
-                  </NavItem>
-                  <NavItem eventKey="edit/text">
-                      <NavText>
-                          Add Text
-                      </NavText>
-                  </NavItem>
-                  <NavItem eventKey="edit/image">
-                      <NavText>
-                          Add Image
-                      </NavText>
-                  </NavItem>
-              </NavItem>
-            </SideNav.Nav>
-          </SideNav>
-          <Main expanded={expanded}>
-              {this.renderBreadcrumbs()}
-              <Switch className="sideSpacer">
-                <Route exact path="/" component={HomePage} />
-                <Route path="/home" component={HomePage} />
-                <Route path="/create" component={CreatePage} />
-                <Route path="/edit/main" component={EditMain} />
-                <Route path="/edit/text" component={EditText} />
-                <Route path="/edit/image" component={EditImage} />
-              </Switch>
-          </Main>
-      </div>
+        <HashRouter>
+          <div>
+            <head>
+              CARD MAKER BY TEAM JUSTICE
+            </head>
+            <SideNav onSelect={this.onSelect} onToggle={this.onToggle}>
+              <SideNav.Toggle />
+              <SideNav.Nav defaultSelected="create" selected={selected}>
+                <NavItem eventKey="home">
+                    <NavIcon>
+                        <img className="icon" src={homeLogo} alt="Home" />
+                    </NavIcon>
+                    <NavText>
+                        Home
+                    </NavText>
+                </NavItem>
+                <NavItem eventKey="create">
+                    <NavIcon>
+                        <img className="icon" src={createLogo} alt="Create" />
+                    </NavIcon>
+                    <NavText>
+                        Create
+                    </NavText>
+                </NavItem>
+                <NavItem eventKey="edit">
+                    <NavIcon>
+                        <img className="icon" src={editLogo} alt="Edit" />
+                    </NavIcon>
+                    <NavText>
+                        Edit
+                    </NavText>
+                    <NavItem eventKey="edit/main">
+                        <NavText>
+                            Main Workspace
+                        </NavText>
+                    </NavItem>
+                    <NavItem eventKey="edit/text">
+                        <NavText>
+                            Add Text
+                        </NavText>
+                    </NavItem>
+                    <NavItem eventKey="edit/image">
+                        <NavText>
+                            Add Image
+                        </NavText>
+                    </NavItem>
+                </NavItem>
+              </SideNav.Nav>
+            </SideNav>
+            <Main expanded={expanded}>
+                {this.renderBreadcrumbs()}
+                  <Route exact path="/" component={HomePage} />
+                  <Route path="/home" component={HomePage} />
+                  <Route path="/create" component={CreatePage} />
+                  <Route path="/edit/main" component={EditMain} />
+                  <Route path="/edit/text" component={EditText} />
+                  <Route path="/edit/image" component={EditImage} />
+            </Main>
+        </div>
+      </HashRouter>
     );
   }
 };
