@@ -347,4 +347,8 @@
   box-sizing: inherit;
 }
 
+.icon {
+  width: 20px;
+}
+
 /*# sourceMappingURL=react-sidenav.css.map*/
