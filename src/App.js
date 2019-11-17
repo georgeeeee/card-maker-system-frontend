@@ -132,12 +132,14 @@ export default class extends PureComponent {
             </SideNav>
             <Main expanded={expanded}>
                 {this.renderBreadcrumbs()}
-                  <Route exact path="/" component={HomePage} />
-                  <Route path="/home" component={HomePage} />
-                  <Route path="/create" component={CreatePage} />
-                  <Route path="/edit/main" component={EditMain} />
-                  <Route path="/edit/text" component={EditText} />
-                  <Route path="/edit/image" component={EditImage} />
+                  <Switch className="sideSpacer">
+                    <Route exact path="/" component={HomePage} />
+                    <Route path="/home" component={HomePage} />
+                    <Route path="/create" component={CreatePage} />
+                    <Route path="/edit/main" component={EditMain} />
+                    <Route path="/edit/text" component={EditText} />
+                    <Route path="/edit/image" component={EditImage} />
+                  </Switch>
             </Main>
         </div>
       </HashRouter>
