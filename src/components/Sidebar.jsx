@@ -1,75 +1,59 @@
 import React, { Component } from 'react';
 
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import Form from '../components/Form';
+import Input from '../components/Input';
+import DropDown from '../components/DropDown';
 
-import createLogo from '../assets/images/create.png';
-import homeLogo from '../assets/images/home.png';
-import editLogo from '../assets/images/edit.png';
+import CONSTANTS from '../constants/constants';
 
-import '../react-sidenav.css';
+import CardApi from '../api/card';
 
 class Sidebar extends Component {
-    state = {
-        selected: 'home',
-        expanded: true
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            recipient: '',
+            eventType: '',
+            orientation: '',
+        }
+        this.onChange = this.onChange.bind(this);
+        this.createNewCard = this.createNewCard.bind(this);
+    }
 
-    onSelect = (selected) => {
-        this.setState({ selected: selected });
-    };
+    onChange(event) {
+        this.setState({[event.target.name]: event.target.value});
+    }
 
-    onToggle = (expanded) => {
-        this.setState({ expanded: expanded });
-    };
+    createNewCard() {
+        const {recipient, eventType, orientation} = this.state;
+        const card = {
+            recipient,
+            eventType,
+            orientation
+        }
+        CardApi.addCard(card, (response) => {
+            window.location.reload(true);
+        }) ;
+
+    }
 
     render() {
-        const { selected } = this.state;
+        let {recipient, eventType, orientation} = this.state;
 
         return(
-            <SideNav onSelect={this.onSelect} onToggle={this.onToggle}>
-                <SideNav.Toggle />
-                <SideNav.Nav defaultSelected="create" selected={selected}>
-                <NavItem eventKey="home">
-                    <NavIcon>
-                        <img className="icon" src={homeLogo} alt="Home" />
-                    </NavIcon>
-                    <NavText>
-                        Home
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="create">
-                    <NavIcon>
-                        <img className="icon" src={createLogo} alt="Create" />
-                    </NavIcon>
-                    <NavText>
-                        Create
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="edit">
-                    <NavIcon>
-                        <img className="icon" src={editLogo} alt="Edit" />
-                    </NavIcon>
-                    <NavText>
-                        Edit
-                    </NavText>
-                    <NavItem eventKey="edit/main">
-                        <NavText>
-                            Main Workspace
-                        </NavText>
-                    </NavItem>
-                    <NavItem eventKey="edit/text">
-                        <NavText>
-                            Add Text
-                        </NavText>
-                    </NavItem>
-                    <NavItem eventKey="edit/image">
-                        <NavText>
-                            Add Image
-                        </NavText>
-                    </NavItem>
-                </NavItem>
-                </SideNav.Nav>
-            </SideNav>
+            <div className="col-lg-3">
+                <div className="list-group">
+                    <h3>Create Card</h3>
+                    <br></br>
+                    <Form onSubmit={this.createNewCard}>
+                        <Input type="text" name="recipient" value={recipient} onChange={this.onChange} placeholder="Recipient"></Input>
+                        <DropDown name="eventType" value={eventType} onChange={this.onChange} options={CONSTANTS.EVENTS} placeholder="Select an event type"></DropDown>
+                        <DropDown name="orientation" value={orientation} onChange={this.onChange} options={CONSTANTS.ORIENTATIONS} placeholder="Select an orientation"></DropDown>
+                        <button type="submit" className="btn btn-secondary">Create</button>
+                    </Form>
+                </div>
+
+            </div>
         );
     }  
 }

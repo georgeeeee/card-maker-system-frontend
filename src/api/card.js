@@ -1,4 +1,4 @@
-import httpService from './services/HttpService';
+import httpService from '../services/HttpService';
 
 class CardApi {
     static listAllCards(callback) {

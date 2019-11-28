@@ -1,46 +1,45 @@
-import URLS from './constants/urls';
+import URLS from '../constants/urls';
 
 class HttpService {
-    async get(url, callback) {
-        var xhr = new XMLHttpRequest();
-        url = `${URLS.API_URL}url`;
-
-        xhr.open("GET", url);
-        xhr.send();
-
+    handleResponse(xhr, callbackSuccess, callbackError=null) {
         xhr.onloadend = function () {
-            this.handleResponse(xhr, callback);
-        };
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.response);
+                    callbackSuccess(response);
+                } else if (xhr.status === 400) {
+                    alert ("unable to process request");
+                }
+            } else {
+                callbackError();
+            }
+        }
+    }
+
+    async get(path, callback) {
+        let xhr = new XMLHttpRequest();
+        const url = URLS.API_URL + path;
+
+        xhr.open("GET", url, true);
+        xhr.send();
+        this.handleResponse(xhr, callback);
 
         return xhr;
     }
 
-    async post(url, data, callback) {
-        var xhr = new XMLHttpRequest();
-        url = `${URLS.API_URL}url`;
+    async post(path, data, callback) {
+        let xhr = new XMLHttpRequest();
+        const url = URLS.API_URL + path;
 
         var js = JSON.stringify(data);
         xhr.open("POST", url, true);
         xhr.send(js);
 
-        xhr.onloadend = function () {
-            this.handleResponse(xhr, callback);
-        };
+        this.handleResponse(xhr, callback);
 
         return xhr;
     }
-
-    handleResponse(xhr, callbackSuccess, callbackError=null) {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                callbackSuccess(xhr.responseText);
-            } else if (xhr.status === 400) {
-                alert ("unable to process request");
-            }
-        } else {
-            callbackError();
-        }
-    }
 }
 
-export const httpService = new HttpService();
+const httpService = new HttpService();
+export default httpService;
