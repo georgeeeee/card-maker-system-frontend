@@ -24,9 +24,12 @@ class HomePage extends Component {
         let {isLoading, cards} = this.state;
 
         const cardsList = [];
-        cards.forEach((card) => {
-            cardsList.push(<Card key={card.cardId} card={card}></Card>);
-        });
+
+        if(cards) {
+            cards.forEach((card) => {
+                cardsList.push(<Card key={card.cardId} card={card} {...this.props}></Card>);
+            });
+        }
 
         return (
             <div className="container main-container">
@@ -37,7 +40,7 @@ class HomePage extends Component {
                         <Sidebar></Sidebar>
                         <div className="col-lg-9 list-group">
                             <div className="row"> 
-                                {cardsList}
+                                {cardsList!=null ? cardsList : "Empty Cards"}
                             </div>
                         </div>
                     </div>

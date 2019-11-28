@@ -24,6 +24,7 @@ class App extends Component {
                 <Header />
                 <Switch>
                     <PublicRoute exact path="/" component={HomePage}></PublicRoute>
+                    <PublicRoute path="/card/:cardId" component={HomePage}></PublicRoute>
                 </Switch>
             </div>
             </Router>

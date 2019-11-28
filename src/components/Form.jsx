@@ -16,6 +16,9 @@ class Form extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        if (this.props.onSubmit !== undefined) {
+            this.props.onSubmit(event);
+        }
     }
 
     addErrorHandlerToChildren() {

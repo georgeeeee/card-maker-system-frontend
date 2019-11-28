@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Input extends Component {
+class DropDown extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,16 +18,26 @@ class Input extends Component {
     }
 
     render() {
-        const {type, placeholder, name, value, errorMessage, className, containerClassName} = this.props;
+        const {name, options, placeholder, errorMessage, value, containerClassName} = this.props;
+
+        const optionList = [];
+
+        if(options) {
+            options.forEach((opt) => {
+                optionList.push(<option key={opt} value={opt}>{opt}</option>);
+            });
+        }
 
         return (
             <div className={`form-group ${containerClassName}`}>
-                <input className={`form-control ${className}`} placeholder={placeholder} 
-                        name={name} value={value} type={type} onChange={this.handleChange}></input>
+                <select name={name} className="form-control" id={name} value={value} onChange={this.handleChange}>
+                    <option value="">{placeholder}</option>
+                    {optionList}
+                </select>
                 {errorMessage ? <span className="error"></span> : null}
             </div>
         );
     }
 };
 
-export default Input;
+export default DropDown;
