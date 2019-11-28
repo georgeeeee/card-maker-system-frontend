@@ -19,8 +19,8 @@ class Card extends Component {
                         </span>
                     </a>
                     <div className="card-footer">
-                        <button className="btn">View</button>
-                        <button className="btn">Delete</button>
+                        <button className="btn btn-outline-success">View</button>
+                        <button className="btn btn-danger">Delete</button>
                     </div>
                 </div>
             </div>
