@@ -8,6 +8,7 @@
 		display: block;
 	}
 }
+
 html, body, #app, .app{
 	font-size: 100%;
 	height: 100%;
@@ -20,7 +21,9 @@ body{
 	height: auto;
 	min-height: 100%;
 	position: relative;
+	padding-top: 56px;
 }
+
 main{
 	margin-bottom: 20px;
 }

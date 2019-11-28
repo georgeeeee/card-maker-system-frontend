@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
 
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-
-import createLogo from '../assets/images/create.png';
-import homeLogo from '../assets/images/home.png';
-import editLogo from '../assets/images/edit.png';
-
-import '../react-sidenav.css';
-
 class Sidebar extends Component {
     state = {
         selected: 'home',
@@ -26,50 +18,14 @@ class Sidebar extends Component {
         const { selected } = this.state;
 
         return(
-            <SideNav onSelect={this.onSelect} onToggle={this.onToggle}>
-                <SideNav.Toggle />
-                <SideNav.Nav defaultSelected="create" selected={selected}>
-                <NavItem eventKey="home">
-                    <NavIcon>
-                        <img className="icon" src={homeLogo} alt="Home" />
-                    </NavIcon>
-                    <NavText>
-                        Home
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="create">
-                    <NavIcon>
-                        <img className="icon" src={createLogo} alt="Create" />
-                    </NavIcon>
-                    <NavText>
-                        Create
-                    </NavText>
-                </NavItem>
-                <NavItem eventKey="edit">
-                    <NavIcon>
-                        <img className="icon" src={editLogo} alt="Edit" />
-                    </NavIcon>
-                    <NavText>
-                        Edit
-                    </NavText>
-                    <NavItem eventKey="edit/main">
-                        <NavText>
-                            Main Workspace
-                        </NavText>
-                    </NavItem>
-                    <NavItem eventKey="edit/text">
-                        <NavText>
-                            Add Text
-                        </NavText>
-                    </NavItem>
-                    <NavItem eventKey="edit/image">
-                        <NavText>
-                            Add Image
-                        </NavText>
-                    </NavItem>
-                </NavItem>
-                </SideNav.Nav>
-            </SideNav>
+            <div className="col-lg-3">
+                <div className="list-group">
+                    <a href="#" className="list-group-item">Category 1</a>
+                    <a href="#" className="list-group-item">Category 2</a>
+                    <a href="#" className="list-group-item">Category 3</a>
+                </div>
+
+            </div>
         );
     }  
 }
