@@ -4,18 +4,20 @@ class Card extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            orientation: props.orientation.toLowerCase()
+            card: props.card
         };
     }
 
     render() {
-        const {orientation} = this.state;
+        let card = this.state.card;
+        card.orientation = card.orientation.toLowerCase();
+
         return (
             <div className="col-lg-4 col-md-6 mb-4">
                 <div className="card h-100">
                     <a href="/cards" className="card-box-link">
-                        <span className={`card-box ${orientation}`}>
-                            Birthday Card for sami
+                        <span className={`card-box ${card.orientation}`}>
+                            {`${card.eventType} card for ${card.recipient}`}
                         </span>
                     </a>
                     <div className="card-footer">

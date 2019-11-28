@@ -25,7 +25,7 @@ class HomePage extends Component {
 
         const cardsList = [];
         cards.forEach((card) => {
-            cardsList.push(<Card key={card.cardId} orientation={card.orientation}></Card>);
+            cardsList.push(<Card key={card.cardId} card={card}></Card>);
         });
 
         return (
