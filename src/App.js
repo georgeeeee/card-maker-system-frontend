@@ -9,6 +9,7 @@ import HttpsRedirect from 'react-https-redirect';
 import Header from './components/Header';
 
 import HomePage from './views/HomePage';
+import CardPage from './views/CardPage';
 
 class App extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class App extends Component {
                 <Header />
                 <Switch>
                     <PublicRoute exact path="/" component={HomePage}></PublicRoute>
-                    <PublicRoute path="/card/:cardId" component={HomePage}></PublicRoute>
+                    <PublicRoute path="/card/:cardId" component={CardPage}></PublicRoute>
                 </Switch>
             </div>
             </Router>

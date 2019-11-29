@@ -1,5 +1,13 @@
-.list-group {
+.main-container {
     margin: 95px 0;
+}
+
+.list-group:first-child {
+    padding-right: 35px !important;
+}
+
+.list-group:last-child {
+    padding-right: 0px !important;
 }
 
 .card-box-link {
@@ -30,12 +38,10 @@ button.btn {
     margin-right: 10px;
 }
 
-// button.btn-view {
-//     background-color: white;
-//     border: 1px solid black;
-// }
-
-// button.btn-delete {
-//     background-color: $error;
-//     border: 1px solid black;
-// }
+.page-container {
+    height: 600px;
+    margin: 18px;
+    border: 1px solid #ced4da;
+    outline: 1px solid #ced4da;
+    outline-offset: 14px;
+}
