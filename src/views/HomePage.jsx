@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Card from '../components/Card';
-import Sidebar from '../components/Sidebar';
+import MainSidebar from '../components/MainSidebar';
 
 import CardApi from '../api/card';
 
@@ -37,7 +37,7 @@ class HomePage extends Component {
                     <div className="row">Loading... </div> 
                     :
                     <div className="row">
-                        <Sidebar></Sidebar>
+                        <MainSidebar></MainSidebar>
                         <div className="col-lg-9 list-group">
                             <div className="row"> 
                                 {cardsList!=null ? cardsList : "Empty Cards"}

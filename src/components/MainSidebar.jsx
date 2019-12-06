@@ -8,7 +8,7 @@ import CONSTANTS from '../constants/constants';
 
 import CardApi from '../api/card';
 
-class Sidebar extends Component {
+class MainSidebar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,4 +55,4 @@ class Sidebar extends Component {
     }  
 }
 
-export default Sidebar;
+export default MainSidebar;
