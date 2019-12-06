@@ -6,6 +6,7 @@ const CONSTANTS = {
     ORIENTATIONS: [LANDSCAPE, PORTRAIT],
     LANDSCAPE: LANDSCAPE,
     PORTRAIT: PORTRAIT,
+    PAGENAMES: ["front", "innerLeft", "innerRight", "back"]
 };
 
 export default CONSTANTS;
