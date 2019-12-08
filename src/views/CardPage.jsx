@@ -16,35 +16,38 @@ class CardPage extends Component {
             isLoading: true,
             card : {},
             pages: [],
-            selectedKey: "front"
+            selectedPageName: "front",
+            currentPage: {}
         };
 
         this.handleNavSelect = this.handleNavSelect.bind(this);
-        this.parsePages = this.parsePages.bind(this);
+        this.getPage = this.getPage.bind(this);
     }
 
-    parsePages(pages) {
-        let currState = this.state;
-        pages.forEach((page) => {
-            currState[page.name] = page;
-        });
-        this.setState({currState});
+    getPage(pageName, pages) {
+        return pages.find(page => {return page.name === pageName;});
     }
 
-    handleNavSelect(selectedKey) {
-        this.setState({...this.state, selectedKey:selectedKey});
+    handleNavSelect(selectedPageName) {
+        let selectedPage = this.getPage(selectedPageName, this.state.pages);
+        this.setState({...this.state, currentPage:selectedPage, selectedPageName:selectedPageName});
     }
 
     componentDidMount() {
         const {cardId} = this.props.match.params;
         PageApi.listAllPages(cardId, (response)=> {
-            this.parsePages(response.card.pages);
-            this.setState({...this.state, isLoading:false, card:response.card, pages:response.card.pages});
+            let pages = response.card.pages;
+
+            let backPage = {pageId: '', name:'back', images:[], texts:[]};
+            pages.push(backPage);
+            
+            let currentPage = this.getPage('front', pages);
+            this.setState({...this.state, isLoading:false, card:response.card, pages:pages, currentPage:currentPage});
         });
     }
 
     render() {
-        let {isLoading, pages, card, selectedKey} = this.state;
+        let {isLoading, pages, card, selectedPageName, currentPage} = this.state;
         const orientation = card.orientation;
         const pageNavLinks = [];
         const pageContents = [];
@@ -61,17 +64,11 @@ class CardPage extends Component {
         if(pages) {
             pages.forEach((page) => {
                 pageContents.push(
-                    <div key={page.name} id={page.name} className={`tab-pane h-100 ${selectedKey === page.name ? 'active' : ''}`}>
+                    <div key={page.name} id={page.name} className={`tab-pane h-100 ${selectedPageName === page.name ? 'active' : ''}`}>
                         <Canvas images={page.images} texts={page.texts} orientation={orientation}></Canvas>
                     </div>
                 );
             });
-
-            pageContents.push(
-                <div key='back" id="back' className={`tab-pane h-100 ${selectedKey === 'back' ? 'active' : ''}`}>
-                        <Canvas images={[]} texts={[]} orientation={orientation}></Canvas>
-                </div>
-            );
         }
 
         return (
@@ -80,11 +77,11 @@ class CardPage extends Component {
                     <div className="row">Loading... </div> 
                     :
                     <div className="row">
-                        <CardSidebar></CardSidebar>
+                        <CardSidebar currentPage={currentPage}></CardSidebar>
                         <div className="col-lg-9 list-group">
                             <div className="page-container">
-                                <Nav variant="tabs" defaultActiveKey={selectedKey}
-                                    onSelect={selectedKey => this.handleNavSelect(selectedKey)}>
+                                <Nav variant="tabs" defaultActiveKey={selectedPageName}
+                                    onSelect={selectedPageName => this.handleNavSelect(selectedPageName)}>
                                     {pageNavLinks}
                                 </Nav>
                                 <div className="tab-content h-100">
