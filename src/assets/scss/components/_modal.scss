@@ -23,7 +23,7 @@
         margin-right: -50% !important;
         -webkit-transform: translate(-50%, -50%) !important;
         transform: translate(-50%, -50%) !important;
-        width: 480px !important;
+        width: 650px !important;
         max-width: 90% !important;
         max-height: 100%;
         height: auto !important;
@@ -34,11 +34,9 @@
     @include e(content) {
         font: normal 18px/1.44 $font-family--secondary;
         text-align: center;
-        border: 4px solid $blue;
-        border-left: none;
-        border-right: none;
         height: 100%;
         overflow-y: auto;
+        padding: 30px;
     }
 
     @include e(body) {

@@ -54,7 +54,7 @@ class AddTextModal extends Component {
 
         return(
             <Modal isOpen={isModalOpen}>
-                <div className="Modal__content LoginModal">
+                <div className="Modal__content">
                 <div className="Modal__header clearfix">
                     <h2 className="Modal__heading">Add Text</h2>
                     <button type="button" className="Button--close" onClick={this.props.closeModal}>&times;</button>

@@ -14,7 +14,7 @@ export default function Modal({children, ...props}) {
             bottom                : 'auto',
             marginRight           : '-50%',
             transform             : 'translate(-50%, -50%)',
-            width                 : '480px',
+            width                 : '680px',
             maxWidth              : '90%' ,
             padding               : '0',
             borderRadius          : '8px'
