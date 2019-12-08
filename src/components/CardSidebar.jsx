@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import Form from '../components/Form';
-import Input from '../components/Input';
-import DropDown from '../components/DropDown';
+import AddTextModal from '../components/modals/AddTextModal';
 
 import CONSTANTS from '../constants/constants';
 
@@ -12,26 +10,36 @@ class CardSidebar extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isAddTextModalOpen: false
         }
-        this.onChange = this.onChange.bind(this);
+
+        this.openAddTextModal = this.openAddTextModal.bind(this);
+        this.closeAddTextModal = this.closeAddTextModal.bind(this);
     }
 
-    onChange(event) {
-        this.setState({[event.target.name]: event.target.value});
+    openAddTextModal() {
+        this.setState({...this.state, isAddTextModalOpen:true});
+    }
+
+    closeAddTextModal() {
+        this.setState({...this.state, isAddTextModalOpen:false});
     }
 
     render() {
+        let {isAddTextModalOpen} = this.state;
 
         return(
             <div className="col-lg-3 list-group">
                 <h3>Edit Pages in Card</h3>
                 <br></br>
-                {/* <Form onSubmit={this.createNewCard}>
-                    <Input type="text" name="recipient" value={recipient} onChange={this.onChange} placeholder="Recipient"></Input>
-                    <DropDown name="eventType" value={eventType} onChange={this.onChange} options={CONSTANTS.EVENTS} placeholder="Select an event type"></DropDown>
-                    <DropDown name="orientation" value={orientation} onChange={this.onChange} options={CONSTANTS.ORIENTATIONS} placeholder="Select an orientation"></DropDown>
-                    <button type="submit" className="btn btn-secondary">Create</button>
-                </Form> */}
+                <button type="button" className="btn btn-info" onClick={this.openAddTextModal}>Add Text</button>
+                <br></br>
+                <button type="button" className="btn btn-secondary">Edit Text</button>
+                <br></br>
+                <button type="button" className="btn btn-info">Add Image</button>
+                <br></br>
+                <button type="button" className="btn btn-secondary">Edit Image</button>
+                <AddTextModal isModalOpen={isAddTextModalOpen} closeModal={this.closeAddTextModal}/>
             </div>
         );
     }  

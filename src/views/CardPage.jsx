@@ -61,11 +61,17 @@ class CardPage extends Component {
         if(pages) {
             pages.forEach((page) => {
                 pageContents.push(
-                    <div key={page.name} id={page.name} className={`tab-pane h-100 ${selectedKey === page.name}? 'active' : ''}`}>
+                    <div key={page.name} id={page.name} className={`tab-pane h-100 ${selectedKey === page.name ? 'active' : ''}`}>
                         <Canvas images={page.images} texts={page.texts} orientation={orientation}></Canvas>
                     </div>
                 );
             });
+
+            pageContents.push(
+                <div key='back" id="back' className={`tab-pane h-100 ${selectedKey === 'back' ? 'active' : ''}`}>
+                        <Canvas images={[]} texts={[]} orientation={orientation}></Canvas>
+                </div>
+            );
         }
 
         return (

@@ -6,7 +6,10 @@ const CONSTANTS = {
     ORIENTATIONS: [LANDSCAPE, PORTRAIT],
     LANDSCAPE: LANDSCAPE,
     PORTRAIT: PORTRAIT,
-    PAGENAMES: ["front", "innerLeft", "innerRight", "back"]
+    PAGENAMES: ["front", "innerLeft", "innerRight", "back"],
+    FONTS: ["Comic San", "Arial"],
+    FONTSIZES: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36],
+    FONTTYPES: ["Normal", "Italic", "Bold", "Underline"]
 };
 
 export default CONSTANTS;
