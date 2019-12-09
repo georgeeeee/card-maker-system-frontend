@@ -41,7 +41,6 @@ class Canvas extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         const canvas = this.refs.canvas;
         const ctx = canvas.getContext("2d");
         this.drawText(ctx);

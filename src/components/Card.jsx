@@ -9,11 +9,16 @@ class Card extends Component {
             card: props.card
         };
         this.viewCard = this.viewCard.bind(this);
+        this.recipientView = this.recipientView.bind(this);
         this.deleteCard = this.deleteCard.bind(this);
     }
 
     viewCard(cardId) {
         this.props.history.push(`card/${cardId}`);
+    }
+
+    recipientView(cardId) {
+        this.props.history.push(`recipient-view/${cardId}`);
     }
 
     deleteCard(cardId) {
@@ -35,6 +40,7 @@ class Card extends Component {
                     </a>
                     <div className="card-footer">
                         <button className="btn btn-outline-success" onClick={this.viewCard.bind(this, card.cardId)}>View</button>
+                        <button className="btn btn-outline-success" onClick={this.recipientView.bind(this, card.cardId)}>Recipient</button>
                         <button className="btn btn-danger" onClick={this.deleteCard.bind(this, card.cardId)}>Delete</button>
                     </div>
                 </div>

@@ -2,14 +2,14 @@ const LANDSCAPE = "Landscape";
 const PORTRAIT = "Portrait";
 const BACKTEXTS = [{
     "text": "Card Maker By Team Justice",
-    "locationX": 350,
+    "locationX": 100,
     "locationY": 400,
     "fontName": "Times New Roman",
     "fontSize": "26",
     "fontType": "Normal"   
 }, {
     "text": "Team: Chen, George, Hung, Sami",
-    "locationX": 350,
+    "locationX": 100,
     "locationY": 430,
     "fontName": "Times New Roman",
     "fontSize": "18",
