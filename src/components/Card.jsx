@@ -39,9 +39,9 @@ class Card extends Component {
                         </span>
                     </a>
                     <div className="card-footer">
-                        <button className="btn btn-outline-success" onClick={this.viewCard.bind(this, card.cardId)}>View</button>
-                        <button className="btn btn-outline-success" onClick={this.recipientView.bind(this, card.cardId)}>Recipient</button>
-                        <button className="btn btn-danger" onClick={this.deleteCard.bind(this, card.cardId)}>Delete</button>
+                        <a className="btn btn-outline-success" href={`card/${card.cardId}`}>View</a>
+                        <a className="btn btn-outline-info" href={`recipient-view/${card.cardId}`} target="_blank">Recipient</a>
+                        <a className="btn btn-danger"><span onClick={this.deleteCard.bind(this, card.cardId)}>Delete</span></a>
                     </div>
                 </div>
             </div>

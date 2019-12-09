@@ -33,9 +33,15 @@
     height: 200px
 }
 
-button.btn {
-    padding: 10px 15px;
-    margin-right: 10px;
+button.btn, a.btn {
+    padding: 6px 8px;
+    margin-right: 5px;
+}
+
+a.btn-danger {
+    span {
+        color: white;
+    }
 }
 
 .page-container {
