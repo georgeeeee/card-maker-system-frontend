@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Modal from '../Modal';
 import Form from '../Form';
 import Input from '../Input';
+import DropDown from '../DropDown';
 import ObjectDropDown from '../ObjectDropDown';
 
 import CONSTANTS from '../../constants/constants';
@@ -17,7 +18,7 @@ class EditTextModal extends Component {
             textElements: props.currentPage.texts,
             currentPage: props.currentPage
         }
-    
+
         this.onChange = this.onChange.bind(this);
         this.editText = this.editText.bind(this);
         this.selectTextElement = this.selectTextElement.bind(this);
@@ -25,7 +26,7 @@ class EditTextModal extends Component {
     }
 
     onChange(event) {
-        this.setState({...this.state, [event.target.name]: event.target.value});
+        this.setState({...this.state, selectedTextElement:{...this.state.selectedTextElement, [event.target.name]:event.target.value}});
     }
 
     selectTextElement(element) {
@@ -72,16 +73,16 @@ class EditTextModal extends Component {
                     
                     { Object.keys(selectedTextElement).length !== 0 ?
                         <div>
-                            {/* <Form onSubmit={this.editText}>
+                            <Form onSubmit={this.editText}>
                                 <Input type="text" name="text" value={selectedTextElement.text} onChange={this.onChange} placeholder="Enter Text"></Input>
                                 <Input type="number" name="locationX" value={selectedTextElement.locationX} onChange={this.onChange} placeholder="Location X"></Input>
                                 <Input type="number" name="locationY" value={selectedTextElement.locationY} onChange={this.onChange} placeholder="Location Y"></Input>
                                 <DropDown name="fontName" value={selectedTextElement.fontName} onChange={this.onChange} options={CONSTANTS.FONTS} placeholder="Font name"></DropDown>
                                 <DropDown name="fontSize" value={selectedTextElement.fontSize} onChange={this.onChange} options={CONSTANTS.FONTSIZES} placeholder="Font size"></DropDown>
                                 <DropDown name="fontType" value={selectedTextElement.fontType} onChange={this.onChange} options={CONSTANTS.FONTTYPES} placeholder="Font type"></DropDown>
-                                <button type="submit" className="btn btn-secondary">Add Text</button>
-                            </Form> */}
-                            <button type="button" className="btn btn-danger" onClick={this.deleteText}>Delete</button>
+                                <button type="submit" className="btn btn-secondary">Edit Text</button>
+                                <button type="button" className="btn btn-danger" onClick={this.deleteText}>Delete</button>
+                            </Form>
                         </div>
                         : null
                     }

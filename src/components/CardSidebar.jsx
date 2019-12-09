@@ -75,11 +75,12 @@ class CardSidebar extends Component {
                         onClick={this.openEditImageModal}
                         disabled={isEditingDisabled}>
                     Edit Image</button>
-                <AddTextModal currentPage={currentPage} isModalOpen={isAddTextModalOpen} 
-                    closeModal={this.closeModal}/>
-                <EditTextModal currentPage={currentPage}
-                    isModalOpen={isEditTextModalOpen} 
-                    closeModal={this.closeModal}/>
+                { isAddTextModalOpen ?
+                <AddTextModal currentPage={currentPage} isModalOpen={true} 
+                    closeModal={this.closeModal}/> : null
+                }
+                { isEditTextModalOpen ? <EditTextModal currentPage={currentPage}
+                    isModalOpen={true} closeModal={this.closeModal}/> : null }
             </div>
         );
     }  
