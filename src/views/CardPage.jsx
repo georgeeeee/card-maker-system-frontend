@@ -37,9 +37,7 @@ class CardPage extends Component {
         const {cardId} = this.props.match.params;
         PageApi.listAllPages(cardId, (response)=> {
             let pages = response.card.pages;
-
-            let backPage = {pageId: '', name:'back', images:[], texts:[]};
-            pages.push(backPage);
+            pages.push(CONSTANTS.BACKPAGE);
             
             let currentPage = this.getPage('front', pages);
             this.setState({...this.state, isLoading:false, card:response.card, pages:pages, currentPage:currentPage});
