@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.scss';
 
 // Routing libraries
-import { BrowserRouter as Router, HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as HashRouter, Route, Switch } from 'react-router-dom';
 import HttpsRedirect from 'react-https-redirect';
 
 import Header from './components/Header';
@@ -21,7 +21,7 @@ class App extends Component {
     render() {
         return (
         <HttpsRedirect>
-            <Router>
+            <HashRouter>
             <div className="App">
                 <Header />
                 <Switch>
@@ -30,7 +30,7 @@ class App extends Component {
                     <PublicRoute path="/recipient-view/:cardId/" component={RecipientCardPage}></PublicRoute>
                 </Switch>
             </div>
-            </Router>
+            </HashRouter>
         </HttpsRedirect>
         );
     }
