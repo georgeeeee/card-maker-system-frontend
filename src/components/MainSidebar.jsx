@@ -8,7 +8,7 @@ import CONSTANTS from '../constants/constants';
 
 import CardApi from '../api/card';
 
-class Sidebar extends Component {
+class MainSidebar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,21 +41,18 @@ class Sidebar extends Component {
         let {recipient, eventType, orientation} = this.state;
 
         return(
-            <div className="col-lg-3">
-                <div className="list-group">
-                    <h3>Create Card</h3>
-                    <br></br>
-                    <Form onSubmit={this.createNewCard}>
-                        <Input type="text" name="recipient" value={recipient} onChange={this.onChange} placeholder="Recipient"></Input>
-                        <DropDown name="eventType" value={eventType} onChange={this.onChange} options={CONSTANTS.EVENTS} placeholder="Select an event type"></DropDown>
-                        <DropDown name="orientation" value={orientation} onChange={this.onChange} options={CONSTANTS.ORIENTATIONS} placeholder="Select an orientation"></DropDown>
-                        <button type="submit" className="btn btn-secondary">Create</button>
-                    </Form>
-                </div>
-
+            <div className="col-lg-3 list-group">
+                <h3>Create Card</h3>
+                <br></br>
+                <Form onSubmit={this.createNewCard}>
+                    <Input type="text" name="recipient" value={recipient} onChange={this.onChange} placeholder="Recipient"></Input>
+                    <DropDown name="eventType" value={eventType} onChange={this.onChange} options={CONSTANTS.EVENTS} placeholder="Select an event type"></DropDown>
+                    <DropDown name="orientation" value={orientation} onChange={this.onChange} options={CONSTANTS.ORIENTATIONS} placeholder="Select an orientation"></DropDown>
+                    <button type="submit" className="btn btn-secondary">Create</button>
+                </Form>
             </div>
         );
     }  
 }
 
-export default Sidebar;
+export default MainSidebar;
