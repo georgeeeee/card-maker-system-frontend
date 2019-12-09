@@ -41,7 +41,7 @@ class Card extends Component {
                     <div className="card-footer">
                         <a className="btn btn-outline-success" href={`card/${card.cardId}`}>View</a>
                         <a className="btn btn-outline-info" href={`recipient-view/${card.cardId}`} target="_blank">Recipient</a>
-                        <a className="btn btn-danger"><span onClick={this.deleteCard.bind(this, card.cardId)}>Delete</span></a>
+                        <a className="btn btn-danger" href=""><span onClick={this.deleteCard.bind(this, card.cardId)}>Delete</span></a>
                     </div>
                 </div>
             </div>
