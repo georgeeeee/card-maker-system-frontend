@@ -42,7 +42,7 @@ class Card extends Component {
                     </a>
                     <div className="card-footer">
                         <Link className="btn btn-outline-success" to={`/card/${card.cardId}`}>View</Link>
-                        <Link className="btn btn-outline-info" to={`/recipient-view/${card.cardId}`} target="_blank">Recipient</Link>
+                        <Link className="btn btn-outline-info" to={`/recipient-view/${card.cardId}`}>Recipient</Link>
                         <button className="btn btn-danger" onClick={this.deleteCard.bind(this, card.cardId)}>Delete</button>
                     </div>
                 </div>
