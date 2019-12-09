@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import {Link} from 'react-router-dom';
+
 import CardApi from '../api/card';
 
 class Card extends Component {
@@ -39,9 +41,9 @@ class Card extends Component {
                         </span>
                     </a>
                     <div className="card-footer">
-                        <a className="btn btn-outline-success" href={`card/${card.cardId}`}>View</a>
-                        <a className="btn btn-outline-info" href={`recipient-view/${card.cardId}`} target="_blank">Recipient</a>
-                        <a className="btn btn-danger" href=""><span onClick={this.deleteCard.bind(this, card.cardId)}>Delete</span></a>
+                        <Link className="btn btn-outline-success" to={`/card/${card.cardId}`}>View</Link>
+                        <Link className="btn btn-outline-info" to={`/recipient-view/${card.cardId}`} target="_blank">Recipient</Link>
+                        <button className="btn btn-danger" onClick={this.deleteCard.bind(this, card.cardId)}>Delete</button>
                     </div>
                 </div>
             </div>
