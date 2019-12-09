@@ -48,6 +48,10 @@ class AddTextModal extends Component {
 
     }
 
+    componentWillReceiveProps({currentPage}) {
+        this.setState({...this.state, currentPage})
+    }
+
     render() {
         let { isModalOpen } = this.props;
         let {text, locationX, locationY, fontName, fontSize, fontType} = this.state;
