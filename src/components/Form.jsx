@@ -35,8 +35,9 @@ class Form extends Component {
     }
 
     render() {
+        let {className} = this.props;
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className={className}>
                 {this.addErrorHandlerToChildren()}
             </form>
         );

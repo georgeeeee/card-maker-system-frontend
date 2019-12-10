@@ -17,6 +17,7 @@
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
     "react-https-redirect": "^1.1.0",
+    "react-image-picker": "^1.1.1",
     "react-metismenu": "^1.4.0",
     "react-modal": "^3.11.1",
     "react-router-dom": "^5.1.2",
