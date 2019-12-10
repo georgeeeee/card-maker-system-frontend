@@ -1,5 +1,5 @@
 const URLS = {
-    API_URL : 'https://7r137dq2d5.execute-api.us-east-1.amazonaws.com/testApp2'
+    API_URL : 'https://cbx1tabwla.execute-api.us-east-1.amazonaws.com/testApp3'
 }
 
 export default URLS;

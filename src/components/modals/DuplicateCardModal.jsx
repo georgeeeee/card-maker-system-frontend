@@ -35,7 +35,7 @@ class DuplicateCardModal extends Component {
         const {selectedCard, recipient} = this.state;
 
         let data = {
-            recipient,
+            recipientName: recipient,
             cardId: selectedCard.cardId
         }
 

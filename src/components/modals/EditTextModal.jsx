@@ -76,7 +76,7 @@ class EditTextModal extends Component {
                     
                     { Object.keys(selectedTextElement).length !== 0 ?
                         <div>
-                            <Form onSubmit={this.editText}>
+                            <Form onSubmit={this.editText} className="form-container">
                                 <Input type="text" name="text" value={selectedTextElement.text} onChange={this.onChange} placeholder="Enter Text"></Input>
                                 <Input type="number" name="locationX" value={selectedTextElement.locationX} onChange={this.onChange} placeholder="Location X"></Input>
                                 <Input type="number" name="locationY" value={selectedTextElement.locationY} onChange={this.onChange} placeholder="Location Y"></Input>
