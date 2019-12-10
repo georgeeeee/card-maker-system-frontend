@@ -7,6 +7,12 @@ Members: Hung Hong, Jianbing Yang, Sami Baral, Zhiyuan Chen
 Backend (Java, AWS Lambda function) : https://github.com/imaslarab/CS509-CardMaker
 Frontend (React hosted in AWS Amplity) : https://github.com/imaslarab/CS509-CardMaker-React
 
+## Run the React Project locally
+<pre>
+   npm install
+   npm start
+</pre>
+
 ### Capabilities
 
 #### 1. Card Construction Operations
