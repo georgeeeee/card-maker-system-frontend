@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
+import ImagePicker from 'react-image-picker'
+import 'react-image-picker/dist/index.css'
+
 import Modal from '../Modal';
 import Form from '../Form';
 import Input from '../Input';
-import DropDown from '../DropDown';
-import ObjectDropDown from '../ObjectDropDown';
-
-import CONSTANTS from '../../constants/constants';
 
 import ElementApi from '../../api/elements';
 
@@ -21,7 +20,7 @@ class EditImageModal extends Component {
 
         this.onChange = this.onChange.bind(this);
         this.editImage = this.editImage.bind(this);
-        this.selectImageElement = this.selectImageElement.bind(this);
+        this.selectImage = this.selectImage.bind(this);
         this.deleteImage = this.deleteImage.bind(this);
         this.uploadFile = this.uploadFile.bind(this);
     }
@@ -30,8 +29,8 @@ class EditImageModal extends Component {
         this.setState({...this.state, selectedImageElement:{...this.state.selectedImageElement, [event.target.name]:event.target.value}});
     }
 
-    selectImageElement(element) {
-        this.setState({...this.state, selectedImageElement:element});
+    selectImage(selection) {
+        this.setState({selectedImageElement: selection.value});
     }
 
     uploadFile(event) {
@@ -50,11 +49,14 @@ class EditImageModal extends Component {
     }
 
     editImage() {
-        const {currentPage, selectedImageElement} = this.state;
+        const {selectedImageElement, currentPage} = this.state;
 
-        // ElementApi.editTextElement(currentPage.pageId, selectedTextElement, (response) => {
-        //     window.location.reload(true);
-        // }) ;
+        var imageData = selectedImageElement;
+        imageData.isReplaceImage = false;
+
+        ElementApi.editImageElement(currentPage.pageId, imageData.elementId, imageData, (response) => {
+            window.location.reload(true);
+        }) ;
 
     }
 
@@ -82,10 +84,12 @@ class EditImageModal extends Component {
                     <button type="button" className="Button--close" onClick={this.props.closeModal}>&times;</button>
                 </div>
                 <div className="Modal__body  clearfix">
-                    <ObjectDropDown name="selectedImageElement" 
-                                value={selectedImageElement} options={imageElements}
-                                onChange={this.selectImageElement} type="image"
-                                placeholder="Select element to edit"></ObjectDropDown>
+                    <div>
+                        <p className="left">Select an image to edit:</p>
+                        <ImagePicker images={imageElements.map((image) => ({src:image.imageUrl, value:image}))}
+                                    onPick={this.selectImage} />
+                    </div>
+                    <br></br>
                     
                     { Object.keys(selectedImageElement).length !== 0 ?
                         <div>

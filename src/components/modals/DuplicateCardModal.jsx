@@ -5,8 +5,6 @@ import Form from '../Form';
 import Input from '../Input';
 import ObjectDropDown from '../ObjectDropDown';
 
-import CONSTANTS from '../../constants/constants';
-
 import CardApi from '../../api/card';
 
 class DuplicateCardModal extends Component {

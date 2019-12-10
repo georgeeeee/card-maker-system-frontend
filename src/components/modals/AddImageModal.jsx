@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import Modal from '../Modal';
 import Form from '../Form';
 import Input from '../Input';
-import DropDown from '../DropDown';
-
-import CONSTANTS from '../../constants/constants';
 
 import ElementApi from '../../api/elements';
 
