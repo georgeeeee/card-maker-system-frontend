@@ -36,9 +36,12 @@ class EditTextModal extends Component {
     editText() {
         const {currentPage, selectedTextElement} = this.state;
 
-        // ElementApi.editTextElement(currentPage.pageId, selectedTextElement, (response) => {
-        //     window.location.reload(true);
-        // }) ;
+        let textData = selectedTextElement;
+        textData.pageId = currentPage.pageId;
+
+        ElementApi.editTextElement(currentPage.pageId, textData, (response) => {
+            window.location.reload(true);
+        }) ;
 
     }
 

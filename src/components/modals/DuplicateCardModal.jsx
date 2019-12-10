@@ -50,7 +50,7 @@ class DuplicateCardModal extends Component {
 
     render() {
         let { isModalOpen } = this.props;
-        let {selectedCard, cards, recipient} = this.state;
+        let { selectedCard, cards, recipient } = this.state;
 
         return(
             <Modal isOpen={isModalOpen}>

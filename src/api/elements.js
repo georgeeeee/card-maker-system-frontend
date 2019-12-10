@@ -13,6 +13,12 @@ class ElementApi {
         return httpService.post(url, text, callback);
     }
 
+    static editTextElement(pageId, elementId, text, callback) {
+        let url = `/page/${pageId}/element/${elementId}/edit/text`;
+
+        return httpService.post(url, text, callback);
+    }
+
     static deleteElement(pageId, elementId, callback) {
         let url = `/page/${pageId}/element/${elementId}`;
         let data = {
