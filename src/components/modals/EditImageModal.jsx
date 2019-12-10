@@ -13,6 +13,8 @@ class EditImageModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            file: '',
+            fileName: '',
             selectedImageElement: {},
             imageElements: props.currentPage.images,
             currentPage: props.currentPage
@@ -49,13 +51,31 @@ class EditImageModal extends Component {
     }
 
     editImage() {
-        const {selectedImageElement, currentPage} = this.state;
+        const {selectedImageElement, currentPage, file, fileName} = this.state;
+        let isReplaced = file !== '' && fileName !== '' ? true : false;
 
-        var imageData = selectedImageElement;
-        imageData.isReplaceImage = false;
+        let imageData = {
+            pageId: currentPage.pageId,
+            elementId: selectedImageElement.elementId,
+            locationX: selectedImageElement.locationX,
+            locationY: selectedImageElement.locationY,
+            width: selectedImageElement.width,
+            height: selectedImageElement.height,
+            fileName: fileName ? fileName : null,
+            isReplaceImage: isReplaced
+        };
 
         ElementApi.editImageElement(currentPage.pageId, imageData.elementId, imageData, (response) => {
-            window.location.reload(true);
+            if(isReplaced) {
+                let body = JSON.parse(response.body);
+                let {presignedUrl} = body;
+
+                ElementApi.uploadImageToS3(presignedUrl, file, (response) => {
+                    window.location.reload(true);
+                });
+            } else {
+                window.location.reload(true);
+            }
         }) ;
 
     }
