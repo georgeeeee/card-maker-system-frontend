@@ -39,7 +39,7 @@ class EditTextModal extends Component {
         let textData = selectedTextElement;
         textData.pageId = currentPage.pageId;
 
-        ElementApi.editTextElement(currentPage.pageId, textData, (response) => {
+        ElementApi.editTextElement(currentPage.pageId, textData.elementId, textData, (response) => {
             window.location.reload(true);
         }) ;
 
