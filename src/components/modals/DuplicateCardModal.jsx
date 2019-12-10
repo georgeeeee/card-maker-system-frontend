@@ -7,7 +7,7 @@ import ObjectDropDown from '../ObjectDropDown';
 
 import CONSTANTS from '../../constants/constants';
 
-import ElementApi from '../../api/elements';
+import CardApi from '../../api/card';
 
 class DuplicateCardModal extends Component {
     constructor(props) {
@@ -32,11 +32,16 @@ class DuplicateCardModal extends Component {
     }
 
     duplicateCard() {
-        // const {currentPage, selectedTextElement} = this.state;
+        const {selectedCard, recipient} = this.state;
 
-        // ElementApi.deleteElement(currentPage.pageId, selectedTextElement.elementId, (response) => {
-        //     window.location.reload(true);
-        // });
+        let data = {
+            recipient,
+            cardId: selectedCard.cardId
+        }
+
+        CardApi.duplicateCard(selectedCard.cardId, data, (response) => {
+            window.location.reload(true);
+        });
     }
 
     componentWillReceiveProps({cards}) {

@@ -13,6 +13,12 @@ class CardApi {
         return httpService.post(url, card, callback);
     }
 
+    static duplicateCard(cardId, data, callback) {
+        let url = `/card/${cardId}/duplicate`;
+
+        return httpService.post(url, data, callback);
+    }
+
     static deleteCard(cardId, callback) {
         let url = `/card/${cardId}/delete`;
         let data = {
