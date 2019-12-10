@@ -36,7 +36,7 @@ class ElementApi {
     }
 
     static deleteElement(pageId, elementId, callback) {
-        let url = `/page/${pageId}/element/${elementId}`;
+        let url = `/page/${pageId}/element/${elementId}/delete`;
         let data = {
             pageId,
             elementId
