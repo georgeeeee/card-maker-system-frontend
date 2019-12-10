@@ -13,37 +13,56 @@ class AddImageModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: '',
+            file: '',
+            fileName: '',
             locationX: '',
             locationY: '',
-            fontName: '',
-            fontSize: '',
-            fontType: '',
+            width: '',
+            height: '',
             currentPage: props.currentPage
         }
     
         this.onChange = this.onChange.bind(this);
-        this.addText = this.addText.bind(this);
+        this.addImage= this.addImage.bind(this);
+        this.uploadFile = this.uploadFile.bind(this);
     }
 
     onChange(event) {
         this.setState({...this.state, [event.target.name]: event.target.value});
     }
 
-    addText() {
-        const {currentPage, text, fontName, fontType, fontSize, locationX, locationY} = this.state;
-        const textElement = {
-            pageId: currentPage.pageId,
-            text,
-            fontName,
-            fontType,
-            fontSize,
-            locationX,
-            locationY
+    uploadFile(event) {
+        let reader = new FileReader();
+        let file = event.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                // imagePreviewUrl: reader.result,
+                fileName: file.name
+            });
         }
 
-        ElementApi.addTextElement(currentPage.pageId, textElement, (response) => {
-            window.location.reload(true);
+        reader.readAsDataURL(file)
+    }
+
+    addImage() {
+        const {currentPage, fileName, locationX, locationY, width, height, file} = this.state;
+        const imageElement = {
+            pageId: currentPage.pageId,
+            fileName,
+            locationX,
+            locationY,
+            width,
+            height
+        }
+
+        ElementApi.addImageElement(currentPage.pageId, imageElement, (response) => {
+            let body = JSON.parse(response.body);
+            let {presignedUrl} = body;
+            ElementApi.uploadImageToS3(presignedUrl, file, (response) => {
+                window.location.reload(true);
+            });
         }) ;
 
     }
@@ -54,7 +73,7 @@ class AddImageModal extends Component {
 
     render() {
         let { isModalOpen } = this.props;
-        let {text, locationX, locationY, fontName, fontSize, fontType} = this.state;
+        let {locationX, locationY, width, height} = this.state;
 
         return(
             <Modal isOpen={isModalOpen}>
@@ -64,14 +83,13 @@ class AddImageModal extends Component {
                     <button type="button" className="Button--close" onClick={this.props.closeModal}>&times;</button>
                 </div>
                 <div className="Modal__body  clearfix">
-                    <Form onSubmit={this.addText}>
-                        <Input type="text" name="text" value={text} onChange={this.onChange} placeholder="Enter Text"></Input>
+                    <Form onSubmit={this.addImage}>
+                        <Input type="file" name="fileName" accept="image/*" onChange={this.uploadFile} placeholder="Choose Image"></Input>
                         <Input type="number" name="locationX" value={locationX} onChange={this.onChange} placeholder="Location X"></Input>
                         <Input type="number" name="locationY" value={locationY} onChange={this.onChange} placeholder="Location Y"></Input>
-                        <DropDown name="fontName" value={fontName} onChange={this.onChange} options={CONSTANTS.FONTS} placeholder="Font name"></DropDown>
-                        <DropDown name="fontSize" value={fontSize} onChange={this.onChange} options={CONSTANTS.FONTSIZES} placeholder="Font size"></DropDown>
-                        <DropDown name="fontType" value={fontType} onChange={this.onChange} options={CONSTANTS.FONTTYPES} placeholder="Font type"></DropDown>
-                        <button type="submit" className="btn btn-secondary">Add Text</button>
+                        <Input type="number" name="width" value={width} onChange={this.onChange} placeholder="Width"></Input>
+                        <Input type="number" name="height" value={height} onChange={this.onChange} placeholder="Height"></Input>
+                        <button type="submit" className="btn btn-secondary">Add Image</button>
                     </Form>
                 </div>
                 </div>

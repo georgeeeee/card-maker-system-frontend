@@ -50,7 +50,7 @@ class ObjectDropDown extends Component {
 
         if(options && type === 'image') {
             options.forEach((opt) => {
-                optionList.push(<option key={opt.elemenId} value={opt.elementId}>{`${opt.name}_(${opt.locationX},${opt.locationY})`}</option>);
+                optionList.push(<option key={opt.elementId} value={opt.elementId}>{`${opt.name}_(${opt.locationX},${opt.locationY})`}</option>);
             });
         }
 

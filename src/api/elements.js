@@ -25,6 +25,10 @@ class ElementApi {
         return httpService.post(url, image, callback);
     }
 
+    static uploadImageToS3(url, file, callback) {
+        return httpService.uploadRequestForS3(url, file, callback);
+    }
+
     static editImageElement(pageId, elementId, image, callback) {
         let url = `/page/${pageId}/element/${elementId}/edit/image`;
 

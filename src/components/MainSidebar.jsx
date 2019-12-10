@@ -80,7 +80,8 @@ class MainSidebar extends Component {
                 <button type="button" className="btn btn-success" onClick={this.openShowImagesModal}>Show All Images</button>
                 { isDupilcateCardModalOpen ? <DuplicateCardModal cards={cards}
                     isModalOpen={true} closeModal={this.closeModal}/> : null }
-                { isShowImagesModalOpen ? <ShowImagesModal /> :null}
+                { isShowImagesModalOpen ? <ShowImagesModal isModalOpen={true} 
+                    closeModal={this.closeModal} /> :null}
             </div>
         );
     }  

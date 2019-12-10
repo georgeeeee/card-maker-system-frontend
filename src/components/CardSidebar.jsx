@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import AddTextModal from '../components/modals/AddTextModal';
 import EditTextModal from '../components/modals/EditTextModal';
+import AddImageModal from '../components/modals/AddImageModal';
+import EditImageModal from '../components/modals/EditImageModal';
 
 class CardSidebar extends Component {
     constructor(props) {
@@ -81,6 +83,12 @@ class CardSidebar extends Component {
                 }
                 { isEditTextModalOpen ? <EditTextModal currentPage={currentPage}
                     isModalOpen={true} closeModal={this.closeModal}/> : null }
+                { isAddImageModalOpen ?
+                <AddImageModal currentPage={currentPage} isModalOpen={true} 
+                    closeModal={this.closeModal}/> : null
+                }
+                { isEditImageModalOpen ? <EditImageModal currentPage={currentPage}
+                    isModalOpen={true} closeModal={this.closeModal}/> : null }    
             </div>
         );
     }  
