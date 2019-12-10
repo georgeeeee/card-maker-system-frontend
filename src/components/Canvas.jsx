@@ -33,9 +33,9 @@ class Canvas extends Component {
             images.forEach((img) => {
                 let image = new Image();
                 image.onload = function(){
-                    ctx.drawImage(image, img.locationX, img.locationY); // Or at whatever offset you like
+                    ctx.drawImage(image, img.locationX, img.locationY, img.width, img.height); // Or at whatever offset you like
                 };
-                image.src = img.imgUrl;
+                image.src = img.imageUrl;
             });
         }
     }
