@@ -9,7 +9,7 @@ Frontend (React hosted in AWS Amplity) : https://github.com/imaslarab/CS509-Card
 
 ### Capabilities
 
-1. Card Construction Operations
+#### 1. Card Construction Operations
   * Create Card for a given event and recipient:
     * View the application
     * Under "Create Card", fill up the necessary information (recipient, event type, and orientation)
@@ -31,7 +31,7 @@ Frontend (React hosted in AWS Amplity) : https://github.com/imaslarab/CS509-Card
 	  * View the application
 	  * All cards will be shown on the main dashboard automatically
    
-2. Card Modify Operations
+#### 2. Card Modify Operations
 
 + Add a Text Visual Element to a Card
 	- View the application
@@ -86,7 +86,7 @@ Frontend (React hosted in AWS Amplity) : https://github.com/imaslarab/CS509-Card
 	- Click "Show All Images"
 	- On the popup, all images in S3 Buckets will be displayed
   
-3. Recipient Operations
+#### 3. Recipient Operations
 
 + Generate Link for Recipient
 	- View the application
