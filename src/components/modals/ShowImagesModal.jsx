@@ -14,7 +14,10 @@ class ShowImagesModal extends Component {
 
     componentDidMount() {
         CardApi.getImagesFromS3((response) => {
-            this.setState({ images:response.images });
+            let body = JSON.parse(response.body);
+            let imageUrls = body.ImgList;
+
+            this.setState({ images:imageUrls });
         });
     }
 
@@ -26,7 +29,7 @@ class ShowImagesModal extends Component {
         if(images) {
             images.forEach((img) => {
                 imageList.push(
-                    <div className="col-md-4">
+                    <div className="col-md-4" key={img}>
                         <div className="thumbnail">
                             <a href={img} className="image-thumbnail" >
                                 <img src={img} alt="Lights" />
