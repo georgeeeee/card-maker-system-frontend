@@ -56,6 +56,8 @@ class AddTextModal extends Component {
         let { isModalOpen } = this.props;
         let {text, locationX, locationY, fontName, fontSize, fontType} = this.state;
 
+        let isAddButtonDisabled = !text || !locationX || !locationY || !fontName || !fontSize || !fontType;
+
         return(
             <Modal isOpen={isModalOpen}>
                 <div className="Modal__content">
@@ -71,7 +73,7 @@ class AddTextModal extends Component {
                         <DropDown name="fontName" value={fontName} onChange={this.onChange} options={CONSTANTS.FONTS} placeholder="Font name"></DropDown>
                         <DropDown name="fontSize" value={fontSize} onChange={this.onChange} options={CONSTANTS.FONTSIZES} placeholder="Font size"></DropDown>
                         <DropDown name="fontType" value={fontType} onChange={this.onChange} options={CONSTANTS.FONTTYPES} placeholder="Font type"></DropDown>
-                        <button type="submit" className="btn btn-secondary">Add Text</button>
+                        <button type="submit" className="btn btn-secondary" disabled={isAddButtonDisabled}>Add Text</button>
                     </Form>
                 </div>
                 </div>

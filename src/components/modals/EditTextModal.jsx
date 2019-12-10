@@ -36,9 +36,12 @@ class EditTextModal extends Component {
     editText() {
         const {currentPage, selectedTextElement} = this.state;
 
-        // ElementApi.editTextElement(currentPage.pageId, selectedTextElement, (response) => {
-        //     window.location.reload(true);
-        // }) ;
+        let textData = selectedTextElement;
+        textData.pageId = currentPage.pageId;
+
+        ElementApi.editTextElement(currentPage.pageId, textData.elementId, textData, (response) => {
+            window.location.reload(true);
+        }) ;
 
     }
 
@@ -58,6 +61,10 @@ class EditTextModal extends Component {
         let { isModalOpen } = this.props;
         let {selectedTextElement, textElements} = this.state;
 
+        let isEditButtonDisabled = !selectedTextElement.text || !selectedTextElement.locationX 
+            || !selectedTextElement.locationY || !selectedTextElement.fontName 
+            || !selectedTextElement.fontSize || !selectedTextElement.fontType;
+
         return(
             <Modal isOpen={isModalOpen}>
                 <div className="Modal__content">
@@ -73,14 +80,14 @@ class EditTextModal extends Component {
                     
                     { Object.keys(selectedTextElement).length !== 0 ?
                         <div>
-                            <Form onSubmit={this.editText}>
+                            <Form onSubmit={this.editText} className="form-container">
                                 <Input type="text" name="text" value={selectedTextElement.text} onChange={this.onChange} placeholder="Enter Text"></Input>
                                 <Input type="number" name="locationX" value={selectedTextElement.locationX} onChange={this.onChange} placeholder="Location X"></Input>
                                 <Input type="number" name="locationY" value={selectedTextElement.locationY} onChange={this.onChange} placeholder="Location Y"></Input>
                                 <DropDown name="fontName" value={selectedTextElement.fontName} onChange={this.onChange} options={CONSTANTS.FONTS} placeholder="Font name"></DropDown>
                                 <DropDown name="fontSize" value={selectedTextElement.fontSize} onChange={this.onChange} options={CONSTANTS.FONTSIZES} placeholder="Font size"></DropDown>
                                 <DropDown name="fontType" value={selectedTextElement.fontType} onChange={this.onChange} options={CONSTANTS.FONTTYPES} placeholder="Font type"></DropDown>
-                                <button type="submit" className="btn btn-secondary">Edit Text</button>
+                                <button type="submit" className="btn btn-secondary" disabled={isEditButtonDisabled}>Edit Text</button>
                                 <button type="button" className="btn btn-danger" onClick={this.deleteText}>Delete</button>
                             </Form>
                         </div>
