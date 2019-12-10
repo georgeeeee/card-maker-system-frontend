@@ -41,7 +41,7 @@ class ShowImagesModal extends Component {
             <Modal isOpen={isModalOpen}>
                 <div className="Modal__content">
                 <div className="Modal__header clearfix">
-                    <h2 className="Modal__heading">Edit Text</h2>
+                    <h2 className="Modal__heading">Images in S3 bucket</h2>
                     <button type="button" className="Button--close" onClick={this.props.closeModal}>&times;</button>
                 </div>
                 <div className="Modal__body  clearfix">
