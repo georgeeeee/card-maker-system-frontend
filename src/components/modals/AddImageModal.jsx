@@ -72,6 +72,8 @@ class AddImageModal extends Component {
         let { isModalOpen } = this.props;
         let {locationX, locationY, width, height} = this.state;
 
+        let isAddButtonDisabled = !locationX || !locationY || !width || !height;
+
         return(
             <Modal isOpen={isModalOpen}>
                 <div className="Modal__content">
@@ -86,7 +88,7 @@ class AddImageModal extends Component {
                         <Input type="number" name="locationY" value={locationY} onChange={this.onChange} placeholder="Location Y"></Input>
                         <Input type="number" name="width" value={width} onChange={this.onChange} placeholder="Width"></Input>
                         <Input type="number" name="height" value={height} onChange={this.onChange} placeholder="Height"></Input>
-                        <button type="submit" className="btn btn-secondary">Add Image</button>
+                        <button type="submit" className="btn btn-secondary" disabled={isAddButtonDisabled}>Add Image</button>
                     </Form>
                 </div>
                 </div>

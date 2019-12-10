@@ -72,7 +72,7 @@ class MainSidebar extends Component {
                     <Input type="text" name="recipient" value={recipient} onChange={this.onChange} placeholder="Recipient"></Input>
                     <DropDown name="eventType" value={eventType} onChange={this.onChange} options={CONSTANTS.EVENTS} placeholder="Select an event type"></DropDown>
                     <DropDown name="orientation" value={orientation} onChange={this.onChange} options={CONSTANTS.ORIENTATIONS} placeholder="Select an orientation"></DropDown>
-                    <button type="submit" className="btn btn-block btn-secondary" disabled={!recipient && !eventType && !orientation}>Create</button>
+                    <button type="submit" className="btn btn-block btn-secondary" disabled={!recipient || !eventType || !orientation}>Create</button>
                 </Form>
                 <br></br>
                 <button type="button" className="btn btn-info" onClick={this.openDuplicateCardModal}>Duplicate Card</button>

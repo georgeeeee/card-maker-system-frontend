@@ -76,6 +76,10 @@ class EditImageModal extends Component {
         let { isModalOpen } = this.props;
         let {selectedImageElement, imageElements} = this.state;
 
+        let isEditButtonDisabled = !selectedImageElement.locationX 
+            || !selectedImageElement.locationY || !selectedImageElement.width
+            || !selectedImageElement.height;
+
         return(
             <Modal isOpen={isModalOpen}>
                 <div className="Modal__content">
@@ -99,7 +103,7 @@ class EditImageModal extends Component {
                                 <Input type="number" name="locationY" value={selectedImageElement.locationY} onChange={this.onChange} placeholder="Location Y"></Input>
                                 <Input type="number" name="width" value={selectedImageElement.width} onChange={this.onChange} placeholder="Width"></Input>
                                 <Input type="number" name="height" value={selectedImageElement.height} onChange={this.onChange} placeholder="Height"></Input>
-                                <button type="submit" className="btn btn-secondary">Edit Image</button>
+                                <button type="submit" className="btn btn-secondary" disabled={isEditButtonDisabled}>Edit Image</button>
                                 <button type="button" onClick={this.deleteImage} className="btn btn-danger">Delete</button>
                             </Form>
                         </div>

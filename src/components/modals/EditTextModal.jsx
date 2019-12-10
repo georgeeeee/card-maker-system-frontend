@@ -61,6 +61,10 @@ class EditTextModal extends Component {
         let { isModalOpen } = this.props;
         let {selectedTextElement, textElements} = this.state;
 
+        let isEditButtonDisabled = !selectedTextElement.text || !selectedTextElement.locationX 
+            || !selectedTextElement.locationY || !selectedTextElement.fontName 
+            || !selectedTextElement.fontSize || !selectedTextElement.fontType;
+
         return(
             <Modal isOpen={isModalOpen}>
                 <div className="Modal__content">
@@ -83,7 +87,7 @@ class EditTextModal extends Component {
                                 <DropDown name="fontName" value={selectedTextElement.fontName} onChange={this.onChange} options={CONSTANTS.FONTS} placeholder="Font name"></DropDown>
                                 <DropDown name="fontSize" value={selectedTextElement.fontSize} onChange={this.onChange} options={CONSTANTS.FONTSIZES} placeholder="Font size"></DropDown>
                                 <DropDown name="fontType" value={selectedTextElement.fontType} onChange={this.onChange} options={CONSTANTS.FONTTYPES} placeholder="Font type"></DropDown>
-                                <button type="submit" className="btn btn-secondary">Edit Text</button>
+                                <button type="submit" className="btn btn-secondary" disabled={isEditButtonDisabled}>Edit Text</button>
                                 <button type="button" className="btn btn-danger" onClick={this.deleteText}>Delete</button>
                             </Form>
                         </div>
