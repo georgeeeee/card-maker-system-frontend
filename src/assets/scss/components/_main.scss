@@ -34,7 +34,7 @@
     height: 200px
 }
 
-.card-footer {
+.card-footer, .form-container {
     button.btn, a.btn {
         padding: 6px 8px;
         margin-right: 5px;
@@ -56,4 +56,10 @@
     top: 53%;
     left: 50%;
     transform: translate(-50%, -50%); 
+}
+
+.image-thumbnail {
+    img {
+        width: 100%;
+    }
 }
