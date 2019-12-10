@@ -37,7 +37,7 @@ class HomePage extends Component {
                     <div className="row">Loading... </div> 
                     :
                     <div className="row">
-                        <MainSidebar></MainSidebar>
+                        <MainSidebar cards={cards}/>
                         <div className="col-lg-9 list-group">
                             <div className="row"> 
                                 {cardsList!=null ? cardsList : "Empty Cards"}
