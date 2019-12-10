@@ -39,6 +39,29 @@ class HttpService {
 
         return xhr;
     }
+
+    async uploadRequestForS3(url, data, callback) {
+        let xhr = new XMLHttpRequest();
+
+        var js = data;
+        xhr.open("PUT", url, true);
+        xhr.send(js);
+
+        xhr.onloadend = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    const response = xhr.responseURL;
+                    callback(response);
+                } else if (xhr.status === 400) {
+                    alert ("unable to process request");
+                }
+            } else {
+                alert ("unable to process request");
+            }
+        }
+
+        return xhr;
+    }
 }
 
 const httpService = new HttpService();
