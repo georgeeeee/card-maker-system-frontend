@@ -22,9 +22,9 @@ const CONSTANTS = {
     LANDSCAPE: LANDSCAPE,
     PORTRAIT: PORTRAIT,
     PAGENAMES: ["front", "innerLeft", "innerRight", "back"],
-    FONTS: ["Comic San", "Arial", "Times New Roman"],
-    FONTSIZES: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36],
-    FONTTYPES: ["Normal", "Italic", "Bold", "Underline"],
+    FONTS: ["Arial", "Comic Sans", "Courier New", "Lucida Calligraphy", "Times New Roman"],
+    FONTSIZES: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
+    FONTTYPES: ["Bold", "Italic", "Normal", "Oblique", "Small-caps"],
     BACKPAGE: {
         "name": "back",
         "pageId": "back101",

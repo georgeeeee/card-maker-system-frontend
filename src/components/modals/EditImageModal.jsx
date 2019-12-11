@@ -9,6 +9,9 @@ import Input from '../Input';
 
 import ElementApi from '../../api/elements';
 
+/**
+ * Modal to edit image and delete image
+ */
 class EditImageModal extends Component {
     constructor(props) {
         super(props);
