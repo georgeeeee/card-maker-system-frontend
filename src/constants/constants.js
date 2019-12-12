@@ -23,7 +23,7 @@ const CONSTANTS = {
     PORTRAIT: PORTRAIT,
     PAGENAMES: ["front", "innerLeft", "innerRight", "back"],
     FONTS: ["Arial", "Comic Sans", "Courier New", "Lucida Calligraphy", "Times New Roman"],
-    FONTSIZES: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40],
+    FONTSIZES: [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60],
     FONTTYPES: ["Bold", "Italic", "Normal", "Oblique", "Small-caps"],
     BACKPAGE: {
         "name": "back",

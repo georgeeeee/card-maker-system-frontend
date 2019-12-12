@@ -77,6 +77,7 @@ class CardPage extends Component {
                     <div className="row">
                         <CardSidebar currentPage={currentPage}></CardSidebar>
                         <div className="col-lg-9 list-group">
+                            <h3 className="text-center mb-3">{card.eventType + " Card for " + card.recipient}</h3>
                             <div className="page-container">
                                 <Nav variant="tabs" defaultActiveKey={selectedPageName}
                                     onSelect={selectedPageName => this.handleNavSelect(selectedPageName)}>
